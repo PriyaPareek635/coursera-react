@@ -1,13 +1,13 @@
 import React, { useState } from "react";
+import DishDetail from "./DishdetailComponent";
 // import { Media } from 'reactstrap';
 
 export default function Menu({ dishes }) {
-
-  const [selectedDish, setSelectedDish ] = useState(null);
+  const [selectedDish, setSelectedDish] = useState(null);
 
   const onDishSelect = (dish) => {
     setSelectedDish(dish);
-  }
+  };
 
   const menu = dishes?.map((dish) => {
     return (
@@ -22,19 +22,10 @@ export default function Menu({ dishes }) {
     );
   });
 
-  const renderSelectedDish = (selectedDish) => {
-    return (
-        <div>
-          <div className="fw-bold">{selectedDish?.name}</div>
-          <p>{selectedDish?.description}</p>
-      </div>
-    );
-  }
-
   return (
     <div className="container">
       <div className="row">{menu}</div>
-      <div>{renderSelectedDish(selectedDish)}</div>
+      <DishDetail selectedDish={selectedDish} />
     </div>
   );
 }
